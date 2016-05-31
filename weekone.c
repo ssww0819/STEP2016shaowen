@@ -12,10 +12,14 @@ int main(int argc, char* argv[]) {
 
   int c;
   int ct;
-  while (( c = getc(fp)) != '\n') {
-    ct++;
+  while (( c = getc(fp)) != EOF) {
+    if (c == '\n') {
+      ct++;
+    }
   }
 
   fseek(fp, 0L, SEEK_SET);
 
+  //printf("%d\n", ct);
   
+}
