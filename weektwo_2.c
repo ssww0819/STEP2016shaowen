@@ -1,3 +1,8 @@
+/*
+行列の初期化をコードの中で行う。
+これで、いろいろなサイズの行列の掛け算をして、計算量とサイズの関係を調べる
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -66,17 +71,15 @@ int main(int argc, char** argv)
   
   printf("time: %.6lf sec\n", end - begin);
   // Print C for debugging. Comment out the print before measuring the execution time.
+  /*
   double sum = 0;
   for (i = 0; i < size; i++) {
     for (j = 0; j < size; j++) {
       sum += matrix3[i][j];
-      // printf("c[%d][%d]=%lf\n", i, j, c[i * n + j]);
     }
   }
-  // Print out the sum of all values in C.
-  // This should be 450 for N=3, 3680 for N=4, and 18250 for N=5.
   printf("sum: %.6lf\n", sum);
-  
+  */
   for (a = 0; a < size; a++) {
     free (*(matrix1 + a));
   }
