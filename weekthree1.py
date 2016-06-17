@@ -51,20 +51,19 @@ def tokenize(line):
 
 def evaluate1(tokens):
     tokens1 = []
-    answer = 0
     index = 0
     index1 = 0
-    tokens1[index1]['number'] = tokens[index]['number']
-    index += 1
-    index += 1
+    tokens1.append(tokens[index])
+    index +=1
+    index1 += 1
     while index < len(tokens):
         if tokens[index]['type'] == 'NUMBER':
             if tokens[index - 1]['type'] == 'PLUS':
-                tokens1[index1 - 2]['number'] = tokens[index - 2]['number']
-                tokens1[index1 - 1]['type'] == 'PLUS'
+                tokens1.append(tokens[index - 1])
+                tokens1.append(tokens[index])
             elif tokens[index - 1]['type'] == 'MINUS':
-                tokens1[index1 - 2]['number'] = tokens[index - 2]['number']
-                tokens1[index1 - 1]['type'] == 'MINUS'
+                tokens1.append(tokens[index - 1])
+                tokens1.append(tokens[index])
             elif tokens[index - 1]['type'] == 'MULTIPLY':
                 tokens1[index1 - 2]['number'] = tokens1[index1 - 2]['number'] * tokens[index]['number']
                 index1 = index1 - 2
@@ -85,10 +84,11 @@ def evaluate2(tokens1):
         if tokens1[index]['type'] == 'NUMBER':
             if tokens1[index - 1]['type'] == 'PLUS':
                 answer += tokens1[index]['number']
+                #print answer
             elif tokens1[index - 1]['type'] == 'MINUS':
                 answer -= tokens1[index]['number']
-            #else:
-                #print 'Invalid syntax'
+            else:
+                print 'Invalid syntax'
         index += 1
     return answer
 
@@ -97,6 +97,7 @@ while True:
     print '> ',
     line = raw_input()
     tokens = tokenize(line)
+    #print tokens
     tokens1 = evaluate1(tokens)
     #print tokens1
     answer = evaluate2(tokens1)
