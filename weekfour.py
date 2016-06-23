@@ -30,7 +30,7 @@ for i in range(node):
         if branch[i][j] == 1:
             send[i] += 1
 
-times = 1
+times = 0
 loop = int(param[2])
 
 while times < loop:
